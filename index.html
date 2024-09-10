@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+            flex: 1;
+            text-align: left;
+        }
+
+        .header input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #bbb;
+            width: 50%;
+            max-width: 300px;
+        }
+
+        .nav-bar {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 24px;
+            width: 30px;
+            margin-right: 20px;
+        }
+
+        .nav-bar div {
+            background-color: white;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: #0288d1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .menu a:hover {
+            background-color: #01579b;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ad-placeholder {
+            height: 200px;
+            margin: 20px 0;
+            border: px dashed #0288d1;
+            border-radius: 8px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0288d1;
+            font-size: 18px;
+        }
+
+        .instruction {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .instruction span {
+            color: #0288d1;
+        }
+
+        .icon {
+            font-size: 24px;
+            color: #03a9f4;
+            margin: 0 5px;
+        }
+
+        #timer {
+            font-size: 24px;
+            color: #0288d1;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .text-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-section h2 {
+            color: #0288d1;
+            font-size: 22px;
+        }
+
+        .text-section p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: #0288d1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        #continue-btn {
+            display: none;
+            background-color: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #continue-btn:hover {
+            background-color: #01579b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="nav-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>Fitness Hub</h1>
+        <input type="text" placeholder="Search...">
+        <div id="menu" class="menu">
+            <a href="#workouts">Workouts</a>
+            <a href="#nutrition">Nutrition</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+        <div class="instruction">
+            Please click ads 
+            <span class="icon">👇👇👇</span> 
+            Wait 30 Seconds 
+            <span class="icon">❤️</span> 
+            & Back 
+            <span class="icon">👈👈👈</span>
+        </div>
+        <div id="timer">30</div>
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+        <div class="text-section">
+            <h2>Effective Workouts</h2>
+            <p>Discover a variety of workouts designed to meet your fitness goals. From strength training to cardio, find the best exercises to stay fit and healthy.</p>
+        </div>
+        <div class="text-section">
+            <h2>Healthy Nutrition</h2>
+            <p>Explore nutrition tips and meal plans to complement your fitness regime. Learn how to fuel your body with the right foods for optimal health.</p>
+        </div>
+        <div class="text-section">
+            <h2>Benefits of Regular Exercise</h2>
+            <p>Regular exercise has numerous benefits for both physical and mental health. It helps in maintaining a healthy weight, improving cardiovascular health, and reducing the risk of chronic diseases.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding Macros and Micros</h2>
+            <p>Macros and micros are essential components of nutrition. Learn the difference between macronutrients (proteins, fats, carbohydrates) and micronutrients (vitamins, minerals) and how they affect your health.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Yoga for Stress Relief</h2>
+            <p>Yoga is known for its ability to reduce stress and promote relaxation. Discover various yoga poses and techniques that can help manage stress and improve overall well-being.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Importance of Hydration</h2>
+            <p>Staying hydrated is crucial for maintaining bodily functions and overall health. Learn about the benefits of proper hydration and tips for drinking enough water throughout the day.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Setting Realistic Fitness Goals</h2>
+            <p>Setting realistic and achievable fitness goals is key to maintaining motivation and tracking progress. Explore how to set effective fitness goals and stay on track to achieve them.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Impact of Sleep on Fitness</h2>
+            <p>Quality sleep plays a vital role in fitness and recovery. Understand the connection between sleep and exercise performance, and how to improve your sleep habits for better results.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Healthy Snack Ideas</h2>
+            <p>Snacking can be a part of a healthy diet if you choose nutritious options. Check out some healthy snack ideas that can satisfy your cravings without derailing your fitness goals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Building Endurance with Cardio</h2>
+            <p>Cardiovascular exercises are great for building endurance and improving heart health. Discover various cardio workouts that can help you build stamina and stay fit.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Strength Training Basics</h2>
+            <p>Strength training is essential for building muscle and improving overall strength. Learn the basics of strength training, including exercises and techniques to get started.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Benefits of Group Fitness Classes</h2>
+            <p>Group fitness classes offer a variety of benefits, including motivation, social interaction, and structured workouts. Explore the advantages of joining group fitness classes and find one that suits you.</p>
+        </div>
+        <div class="text-section">
+            <h2>Choosing the Right Workout Gear</h2>
+            <p>Investing in the right workout gear can enhance your exercise experience and prevent injuries. Learn how to choose the best equipment and clothing for your fitness routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Role of Protein in Muscle Building</h2>
+            <p>Protein is crucial for muscle repair and growth. Discover the best sources of protein and how to incorporate them into your diet to support muscle building and recovery.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Effective Home Workout Routines</h2>
+            <p>No gym? No problem! Explore effective home workout routines that can help you stay fit and healthy without needing access to a gym.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding Metabolism and Weight Loss</h2>
+            <p>Metabolism plays a significant role in weight loss and overall health. Learn about how metabolism works and strategies to boost it for effective weight management.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Guidelines for Safe Weightlifting</h2>
+            <p>Weightlifting can be highly beneficial, but safety is key. Follow guidelines and techniques to ensure you lift weights safely and effectively to avoid injury.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Benefits of Outdoor Exercise</h2>
+            <p>Exercising outdoors offers unique benefits such as improved mood and increased vitamin D exposure. Discover outdoor activities and how they can enhance your fitness routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Importance of a Balanced Diet</h2>
+            <p>A balanced diet is essential for overall health and fitness. Learn about the importance of consuming a variety of foods and how to create a balanced meal plan.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Stay Motivated in Your Fitness Journey</h2>
+            <p>Staying motivated can be challenging. Explore strategies and tips to keep yourself motivated and committed to your fitness goals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Benefits of Stretching Before and After Workouts</h2>
+            <p>Stretching helps improve flexibility and prevent injuries. Learn the benefits of stretching and discover some effective stretches to incorporate into your workout routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding Body Composition</h2>
+            <p>Body composition refers to the proportion of fat, muscle, and other tissues in the body. Learn about how body composition affects health and fitness, and how to measure it accurately.</p>
+        </div>
+        <div class="text-section">
+            <h2>Incorporating Yoga into Your Routine</h2>
+            <p>Yoga is a great way to enhance flexibility, strength, and mental clarity. Discover how to integrate yoga into your fitness routine and the benefits it offers.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Benefits of High-Intensity Interval Training (HIIT)</h2>
+            <p>HIIT is a time-efficient workout method that can help you burn calories and improve cardiovascular fitness. Learn how HIIT works and how to incorporate it into your routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Science of Hydration</h2>
+            <p>Proper hydration is crucial for overall health and athletic performance. Understand the science behind hydration and how to ensure you’re drinking enough water.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Exploring Different Cardio Exercises</h2>
+            <p>Cardio exercises are essential for heart health and endurance. Explore various cardio workouts to find the ones that suit your fitness level and preferences.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Impact of Sleep on Fitness</h2>
+            <p>Quality sleep is vital for recovery and overall well-being. Learn about the connection between sleep and fitness, and how to improve your sleep habits for better results.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Create a Fitness Plan</h2>
+            <p>A well-structured fitness plan can help you achieve your goals. Discover the steps to create an effective plan and how to stay on track with your fitness journey.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding Macronutrients</h2>
+            <p>Macronutrients—carbohydrates, proteins, and fats—are essential for energy and overall health. Learn about each macronutrient and how to balance them in your diet.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Benefits of Group Fitness Classes</h2>
+            <p>Group fitness classes offer motivation and a sense of community. Explore the benefits of participating in group classes and how they can enhance your fitness experience.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Injury Prevention and Recovery Tips</h2>
+            <p>Preventing and recovering from injuries is crucial for maintaining a consistent fitness routine. Discover tips and strategies to avoid injuries and support recovery.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Set Realistic Fitness Goals</h2>
+            <p>Setting achievable fitness goals can keep you motivated and focused. Learn how to set realistic goals and track your progress effectively.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Role of Supplements in Fitness</h2>
+            <p>Supplements can support your fitness goals, but it's important to choose them wisely. Understand the different types of supplements and their potential benefits.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Benefits of Functional Training</h2>
+            <p>Functional training focuses on exercises that mimic everyday movements. Learn about the benefits of functional training and how it can improve your overall fitness.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Tips for Healthy Eating on a Budget</h2>
+            <p>Eating healthy doesn’t have to be expensive. Discover tips for making nutritious food choices while staying within your budget.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Importance of Rest Days</h2>
+            <p>Rest days are essential for muscle recovery and overall well-being. Learn why rest days are important and how to incorporate them into your fitness routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Measure Fitness Progress</h2>
+            <p>Tracking your fitness progress helps you stay motivated and make adjustments. Explore different methods for measuring progress and evaluating your achievements.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding Exercise Recovery Techniques</h2>
+            <p>Recovery techniques help your body repair and strengthen. Learn about various recovery methods and how they can enhance your performance and reduce soreness.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Benefits of Stretching After Exercise</h2>
+            <p>Stretching after exercise helps reduce muscle stiffness and improve flexibility. Discover effective post-workout stretches to include in your routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Balance Cardio and Strength Training</h2>
+            <p>Balancing cardio and strength training can lead to a well-rounded fitness regimen. Learn how to effectively combine these two types of exercise for optimal results.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Guidelines for Effective Warm-Ups</h2>
+            <p>Warming up prepares your body for exercise and reduces the risk of injury. Explore guidelines for effective warm-ups and how to incorporate them into your routine.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Understanding the Glycemic Index</h2>
+            <p>The glycemic index measures how foods affect blood sugar levels. Learn about the glycemic index and how to choose foods that support stable energy levels.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>The Connection Between Mental Health and Exercise</h2>
+            <p>Exercise can positively impact mental health. Discover the ways physical activity supports mental well-being and how to use exercise as a tool for stress relief.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Stay Consistent with Your Fitness Routine</h2>
+            <p>Consistency is key to achieving fitness goals. Explore strategies to maintain a regular fitness routine and stay committed to your health objectives.</p>
+        </div>
+                        
+        <button id="continue-btn" onclick="redirectToGoogle()">CONTINUE</button>
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Fitness Hub. All rights reserved.</p>
+        <a href="#workouts">Workouts</a> | 
+        <a href="#nutrition">Nutrition</a> | 
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        let timeLeft = 30;
+        const timerElement = document.getElementById('timer');
+        const continueBtn = document.getElementById('continue-btn');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = 'Time\'s up! Go End ';
+                continueBtn.style.display = 'inline-block';
+            }
+        }, 1000);
+
+        function redirectToGoogle() {
+            window.location.href = 'file:///C:/Users/Sakshi/Desktop/Redirect/3.html';
+        }
+    </script>
+
+</body>
+</html>
